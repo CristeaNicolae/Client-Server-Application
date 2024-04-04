@@ -28,3 +28,17 @@ D:\AN_3\SSC\Proiect\ServerClient\Server\obj\Debug\net6.0\refint\Server.dll
 D:\AN_3\SSC\Proiect\ServerClient\Server\obj\Debug\net6.0\Server.pdb
 D:\AN_3\SSC\Proiect\ServerClient\Server\obj\Debug\net6.0\Server.genruntimeconfig.cache
 D:\AN_3\SSC\Proiect\ServerClient\Server\obj\Debug\net6.0\ref\Server.dll
+D:\AN3\SSC\Proiect\ServerClient\Server\bin\Debug\net6.0\Server.exe
+D:\AN3\SSC\Proiect\ServerClient\Server\bin\Debug\net6.0\Server.deps.json
+D:\AN3\SSC\Proiect\ServerClient\Server\bin\Debug\net6.0\Server.runtimeconfig.json
+D:\AN3\SSC\Proiect\ServerClient\Server\bin\Debug\net6.0\Server.dll
+D:\AN3\SSC\Proiect\ServerClient\Server\bin\Debug\net6.0\Server.pdb
+D:\AN3\SSC\Proiect\ServerClient\Server\obj\Debug\net6.0\Server.GeneratedMSBuildEditorConfig.editorconfig
+D:\AN3\SSC\Proiect\ServerClient\Server\obj\Debug\net6.0\Server.AssemblyInfoInputs.cache
+D:\AN3\SSC\Proiect\ServerClient\Server\obj\Debug\net6.0\Server.AssemblyInfo.cs
+D:\AN3\SSC\Proiect\ServerClient\Server\obj\Debug\net6.0\Server.csproj.CoreCompileInputs.cache
+D:\AN3\SSC\Proiect\ServerClient\Server\obj\Debug\net6.0\Server.dll
+D:\AN3\SSC\Proiect\ServerClient\Server\obj\Debug\net6.0\refint\Server.dll
+D:\AN3\SSC\Proiect\ServerClient\Server\obj\Debug\net6.0\Server.pdb
+D:\AN3\SSC\Proiect\ServerClient\Server\obj\Debug\net6.0\Server.genruntimeconfig.cache
+D:\AN3\SSC\Proiect\ServerClient\Server\obj\Debug\net6.0\ref\Server.dll

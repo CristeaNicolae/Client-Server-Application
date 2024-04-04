@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\AN_3\\SSC\\Proiect\\ServerClient\\Server\\Server.csproj": {}
+    "D:\\AN3\\SSC\\Proiect\\ServerClient\\Server\\Server.csproj": {}
   },
   "projects": {
-    "D:\\AN_3\\SSC\\Proiect\\ServerClient\\Server\\Server.csproj": {
+    "D:\\AN3\\SSC\\Proiect\\ServerClient\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AN_3\\SSC\\Proiect\\ServerClient\\Server\\Server.csproj",
+        "projectUniqueName": "D:\\AN3\\SSC\\Proiect\\ServerClient\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "D:\\AN_3\\SSC\\Proiect\\ServerClient\\Server\\Server.csproj",
-        "packagesPath": "C:\\Users\\Nicusor\\.nuget\\packages\\",
-        "outputPath": "D:\\AN_3\\SSC\\Proiect\\ServerClient\\Server\\obj\\",
+        "projectPath": "D:\\AN3\\SSC\\Proiect\\ServerClient\\Server\\Server.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "D:\\AN3\\SSC\\Proiect\\ServerClient\\Server\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Nicusor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

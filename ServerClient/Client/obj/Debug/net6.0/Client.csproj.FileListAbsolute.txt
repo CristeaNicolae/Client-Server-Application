@@ -28,3 +28,17 @@ D:\AN_3\SSC\Proiect\ServerClient\Client\obj\Debug\net6.0\refint\Client.dll
 D:\AN_3\SSC\Proiect\ServerClient\Client\obj\Debug\net6.0\Client.pdb
 D:\AN_3\SSC\Proiect\ServerClient\Client\obj\Debug\net6.0\Client.genruntimeconfig.cache
 D:\AN_3\SSC\Proiect\ServerClient\Client\obj\Debug\net6.0\ref\Client.dll
+D:\AN3\SSC\Proiect\ServerClient\Client\bin\Debug\net6.0\Client.exe
+D:\AN3\SSC\Proiect\ServerClient\Client\bin\Debug\net6.0\Client.deps.json
+D:\AN3\SSC\Proiect\ServerClient\Client\bin\Debug\net6.0\Client.runtimeconfig.json
+D:\AN3\SSC\Proiect\ServerClient\Client\bin\Debug\net6.0\Client.dll
+D:\AN3\SSC\Proiect\ServerClient\Client\bin\Debug\net6.0\Client.pdb
+D:\AN3\SSC\Proiect\ServerClient\Client\obj\Debug\net6.0\Client.GeneratedMSBuildEditorConfig.editorconfig
+D:\AN3\SSC\Proiect\ServerClient\Client\obj\Debug\net6.0\Client.AssemblyInfoInputs.cache
+D:\AN3\SSC\Proiect\ServerClient\Client\obj\Debug\net6.0\Client.AssemblyInfo.cs
+D:\AN3\SSC\Proiect\ServerClient\Client\obj\Debug\net6.0\Client.csproj.CoreCompileInputs.cache
+D:\AN3\SSC\Proiect\ServerClient\Client\obj\Debug\net6.0\Client.dll
+D:\AN3\SSC\Proiect\ServerClient\Client\obj\Debug\net6.0\refint\Client.dll
+D:\AN3\SSC\Proiect\ServerClient\Client\obj\Debug\net6.0\Client.pdb
+D:\AN3\SSC\Proiect\ServerClient\Client\obj\Debug\net6.0\Client.genruntimeconfig.cache
+D:\AN3\SSC\Proiect\ServerClient\Client\obj\Debug\net6.0\ref\Client.dll

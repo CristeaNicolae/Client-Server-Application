@@ -10,6 +10,8 @@ class Server
 {
     private static List<TcpClient> clients = new List<TcpClient>();
 
+    private static bool stopWritingClientDecon = false;
+
     public static void Main()
     {
         IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
@@ -26,7 +28,8 @@ class Server
         {
             TcpClient client = listener.AcceptTcpClient();
             clients.Add(client);
-            Console.WriteLine("Client conectat. :)");
+            Console.WriteLine("\nClient conectat. :)");
+            Console.Write("Server: ");
 
             Thread clientThread = new Thread(HandleClient);
             clientThread.Start(client);
@@ -42,70 +45,59 @@ class Server
         {
             while (true)
             {
-                byte[] data = new byte[256];
-                int bytes = stream.Read(data, 0, data.Length);
-                string message = Encoding.ASCII.GetString(data, 0, bytes);
-                if (message[0] != '#')
+                if (client.Connected)
                 {
-                    Console.WriteLine("Client: " + message);
-                    Console.Write("Server: ");
-                    BroadcastMessage2(message, client);
-                }
-                else if (message.Equals("#exit"))
+                    byte[] data = new byte[256];
+                    int bytes = stream.Read(data, 0, data.Length);
+                    string message = Encoding.ASCII.GetString(data, 0, bytes);
+                    if (!String.IsNullOrEmpty(message))
                     {
-                        clients.Remove(client);
-                        Console.WriteLine("client deconectat :(");
-                        break;
+                        Console.WriteLine("\nClient: " + message);
+                        Console.Write("Server: ");
+                        BroadcastMessage(message, client);
                     }
-                    
-                
+                }
+                else break;
+
             }
         }
-        catch(IOException e)
+        catch (IOException e)
         {
-            Console.WriteLine("client deconectat :(");
-            clients.Remove(client);
+            if (!stopWritingClientDecon)
+            { 
+                Console.WriteLine("\nclient deconectat :(");
+                Console.Write("Server: ");
+                clients.Remove(client);
+            }
+            else stopWritingClientDecon = true;
         }
         catch(Exception e)
         {
             Console.WriteLine("A aparut o eroare " + e.StackTrace);
         }
+        finally
+        {
+            clients.Remove(client);  // inlatura clientul din lista în orice caz 
+            client.Close();
+        }
 
         client.Close();
     }
 
-    public static void BroadcastMessage(string message) //Transmite un mesaj catre toti clientii
-    {
-        for (int i = clients.Count - 1; i >= 0; i--)
-        {
-            TcpClient client = clients[i];
-            if (client.Connected)
-            {
-                NetworkStream stream = client.GetStream();
-                byte[] data = Encoding.ASCII.GetBytes(message);
-                stream.Write(data, 0, data.Length);
-            }
-            else
-            {
-                clients.RemoveAt(i);
-            }
-        }
-    }
-
     public static void ReadConsoleAndBroadcast()
     {
-        retryReadingClient:
+        retry:
         try 
         {
             while (true)
             {
                 Console.Write("Server: ");
-                string message = Console.ReadLine();
-                if (message != null) 
+                string message = Console.ReadLine() + "";
+                if (!string.IsNullOrEmpty(message)) 
                 { 
                     if (message[0] != '#')
                     {
-                        BroadcastMessage("" + message);
+                        BroadcastMessage(message, null);
                     }
                     else HandleCommand(message); 
                 }
@@ -114,24 +106,50 @@ class Server
         catch (IndexOutOfRangeException e)
         {
             Console.WriteLine("Nu s-a putut transmite mesajul" + e.StackTrace);
-            goto retryReadingClient;
+            goto retry;
         }
     }
 
-    public static void BroadcastMessage2(string message, TcpClient client)  //Transmite mesajul unui client mai departe
+    public static void BroadcastMessage(string message, TcpClient? client)  //Transmite mesajul unui client/serverului mai departe
     {
-        for (int i = clients.Count - 1; i >= 0; i--)
-        {
-            TcpClient clientAux = clients[i];
-            if (clientAux.Connected && clientAux != client)
+        int i = clients.Count - 1;
+        if (client != null)
+        { 
+            while (i >= 0)
             {
-                NetworkStream stream = clientAux.GetStream();
-                byte[] data = Encoding.ASCII.GetBytes(message);
-                stream.Write(data, 0, data.Length);
+                TcpClient clientAux = clients[i];
+                if (clientAux != client)
+                {
+                    if (clientAux.Connected)
+                    {
+                        NetworkStream stream = clientAux.GetStream();
+                        byte[] data = Encoding.ASCII.GetBytes(message);
+                        stream.Write(data, 0, data.Length);
+                    }
+                    else
+                    {
+                        clients.RemoveAt(i);
+                    }
+                }
+                i--;
             }
-            else
+        }
+        else
+        {
+            while (i >= 0)
             {
-                clients.RemoveAt(i);
+                TcpClient client1 = clients[i];
+                if (client1.Connected)
+                {
+                    NetworkStream stream = client1.GetStream();
+                    byte[] data = Encoding.ASCII.GetBytes(message);
+                    stream.Write(data, 0, data.Length);
+                }
+                else
+                {
+                    clients.RemoveAt(i);
+                }
+                i--;
             }
         }
     }
@@ -140,20 +158,23 @@ class Server
     {
         switch(mes)
         {
-            case "#close":                                                      //inchide consola si programul
+            case "#exit":                                                      //inchide consola si programul
                 Environment.Exit(0);
                 break;
             case "#ccount":                                                     //afiseaza numarul de clienti conectati
                 Console.WriteLine("Numarul de clienti: " + clients.Count);
                 break;
-            case "#decon":                                                      //deconecteaza toti clientii                                                            
-                for (int i = clients.Count - 1; i >= 0; i--) 
+            case "#decc":                                                      //deconecteaza toti clientii
+                int i = clients.Count - 1;
+                while(i >= 0) 
                 { 
                     clients[i].Dispose();
                     clients.RemoveAt(i);
+                    i--;
                 }
                 if (clients.Count == 0) Console.WriteLine("toti clientii au fost deconectati cu succes");
                 else Console.WriteLine("a aparut o eroare la deconectarea clientilor");
+                stopWritingClientDecon = true;
                 break;
             default:
                 Console.WriteLine("comanda invalida");
